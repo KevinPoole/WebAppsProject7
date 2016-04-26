@@ -6,7 +6,7 @@ class PlansController < ApplicationController
   respond_to :html
 
   def index
-    @plans.where(user_id:, current_user.id)
+    @plans.where(user_id: current_user.id)
     respond_with(@plans)
   end
 
