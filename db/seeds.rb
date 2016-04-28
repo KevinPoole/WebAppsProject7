@@ -21,5 +21,7 @@ user2.password_confirmation = "password"
 user2.save!
 
 #give joe a couple of plans
-Plan.create(user_id: user1.id, name: "Plan1")
+p = Plan.create(user_id: user1.id, name: "Plan1")
 Plan.create(user_id: user1.id, name: "Plan2")
+
+Term.create(plan:p,semester:"FA",year:2016)
