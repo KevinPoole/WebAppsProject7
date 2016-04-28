@@ -3,6 +3,11 @@
 <p>
   <strong>Name:</strong>
   <%= @plan.name %>
+
+  	<% @plan.terms.each do |term| %>
+		<p><%=term.semester + term.year.to_s%> </p><br>
+	<% end %>
+
 </p>
 
 <%= link_to 'Edit', edit_plan_path(@plan) %> |

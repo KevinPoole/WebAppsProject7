@@ -22,6 +22,15 @@ user2.save!
 
 #give joe a couple of plans
 p = Plan.create(user_id: user1.id, name: "Plan1")
-Plan.create(user_id: user1.id, name: "Plan2")
+#Plan.create(user_id: user1.id, name: "Plan2")
+#p.save!
+#p.terms.create(semester:"FA",year:2016)
+Term.create(plan_id:p.id,semester:"FA",year:2016)
+Term.create(plan_id:p.id,semester:"SP",year:2017)
+#t.save!
+#p.terms = [t]
 
-Term.create(plan:p,semester:"FA",year:2016)
+
+
+#c = Course.create(name:"Old Testament")
+#c.save!
