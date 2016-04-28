@@ -1,12 +1,10 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
-
-	before_action :authenticate_user!
+  before_action :set_plan, only: [:show, :edit, :update, :destroy], :authenticate_user!
 
   respond_to :html
 
   def index
-    @plans.where(:user_id => current_user.id)
+    @plans = Plan.where(user_id: current_user.id)
     respond_with(@plans)
   end
 
