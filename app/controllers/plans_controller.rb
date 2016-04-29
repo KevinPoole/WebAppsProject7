@@ -39,6 +39,12 @@ class PlansController < ApplicationController
     respond_with(@plan)
   end
 
+  def add_term
+    id = params[:plan_id]
+    Term.create(plan_id:id,semester:"SP",year:2020)
+    redirect_to action: "show", id: id
+  end
+
   private
     def set_plan
       @plan = Plan.find(params[:id])

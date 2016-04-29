@@ -3,7 +3,18 @@
 <p>
   <strong>Name:</strong>
   <%= @plan.name %>
+  	<%= form @term do |f| %>
+		  <%= f.label :semester %>:
+		  <%= f.text_field :semester %><br />
 
+		  <%= f.label :year %>:
+		  <%= f.text_field :year %><br />
+
+		  <%= f.hidden_field :plan_id, :value => @plan.id %>
+
+		  <%= f.submit %>
+		<% end %>
+  	
   	<% @plan.terms.each do |term| %>
 		<p><%=term.semester + term.year.to_s%> </p><br>
 		<%= @plan.user.login %>
@@ -11,5 +22,6 @@
 
 </p>
 
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'Back', plans_path %>
+<%= link_to 'Change Plan Name', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %> | 
+<%= link_to 'Add Term', "/plans/"+@plan.id.to_s+"/add_term?plan_id="+@plan.id.to_s, method: :get %>
