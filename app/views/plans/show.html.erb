@@ -6,6 +6,7 @@
 
   	<% @plan.terms.each do |term| %>
 		<p><%=term.semester + term.year.to_s%> </p><br>
+		<%= @plan.user.login %>
 	<% end %>
 
 </p>
