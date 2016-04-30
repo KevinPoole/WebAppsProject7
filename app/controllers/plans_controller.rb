@@ -41,8 +41,14 @@ class PlansController < ApplicationController
 
   def add_term
     id = params[:plan_id]
-    Term.create(plan_id:id,semester:"SP",year:2020)
+    Term.create(plan_id:id,semester:params[:semester],year:params[:year])
     redirect_to action: "show", id: id
+  end
+
+	def delete_term
+    params[:term_id]
+    Term.where(id: params[:term_id]).where(plan_id:params[:plan_id]).destroy_all
+    redirect_to action: "show", id: params[:plan_id]
   end
 
   private

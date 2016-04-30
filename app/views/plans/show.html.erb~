@@ -12,7 +12,7 @@
 	</form>
   	
   	<% @plan.terms.each do |term| %>
-		<p><%=term.semester + term.year.to_s%>  <a href="/plans/<%= @plan.id.to_s%>/delete_term?term_id=<%=term.id.to_s%>&plan_id=<%=@plan.id.to_s%>">Delete</a> </p>
+		<p><%=term.semester + term.year.to_s%>  <a href="/plans/<%= @plan.id.to_s%>/delete_term?term_id=<%=term.id%>">Delete</a> </p>
 	<% end %>
 
 </p>

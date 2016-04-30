@@ -10,6 +10,8 @@ Project7::Application.routes.draw do
 
   get '/plans/:id/add_term' => 'plans#add_term'
 
+  get '/plans/:id/delete_term' => 'plans#delete_term'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
