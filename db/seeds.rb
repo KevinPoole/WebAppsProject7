@@ -5,6 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+c1 = CourseOption.create(name:"CS 1210")
+c2 = CourseOption.create(name:"CS 1220")
+c3 = CourseOption.create(name:"BG 1220")
+c4 = CourseOption.create(name:"BG 1230")
+c5 = CourseOption.create(name:"EGCP 1010")
+
+
 
 user1 = User.new
 user1.login = "joe"
@@ -25,10 +32,13 @@ p = Plan.create(user_id: user1.id, name: "Plan1")
 #Plan.create(user_id: user1.id, name: "Plan2")
 #p.save!
 #p.terms.create(semester:"FA",year:2016)
-Term.create(plan_id:p.id,semester:"FA",year:2016)
-Term.create(plan_id:p.id,semester:"SP",year:2017)
+t1 = Term.create(plan_id:p.id,semester:"FA",year:2016)
+t2 = Term.create(plan_id:p.id,semester:"SP",year:2017)
+
+Course.create(term_id:t1.id,name: "CS 1220")
 #t.save!
 #p.terms = [t]
+
 
 
 
