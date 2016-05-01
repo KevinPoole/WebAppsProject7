@@ -7,6 +7,7 @@ class PlansController < ApplicationController
 
   def index
     @plans = Plan.where(user_id: current_user.id)
+    @course_options = CourseOption.all
     respond_with(@plans)
   end
 
@@ -50,6 +51,21 @@ class PlansController < ApplicationController
     Term.where(id: params[:term_id]).where(plan_id:params[:plan_id]).destroy_all
     redirect_to action: "show", id: params[:plan_id]
   end
+
+  def add_course_to_term
+    name = params[:course_name]
+    t_id = params[:term_id]
+    Course.create(term_id:t_id,name: name)
+    redirect_to action: "show", id: params[:plan_id]
+  end
+
+  def remove_course_from_term
+    name = params[:course_name]
+    t_id = params[:term_id]
+    Course.where(term_id:t_id).where(name: name).destroy_all
+    redirect_to action: "show", id: params[:plan_id]
+  end
+
 
   private
     def set_plan

@@ -3,6 +3,7 @@
 <p>
   <strong>Name:</strong>
   <%= @plan.name %>
+  <% @course_options = CourseOption.all %>
   	
 	<form action="/plans/<%= @plan.id.to_s%>/add_term" method="get">
 		<input type="text" name="semester"/>
@@ -13,6 +14,24 @@
   	
   	<% @plan.terms.each do |term| %>
 		<p><%=term.semester + term.year.to_s%>  <a href="/plans/<%= @plan.id.to_s%>/delete_term?term_id=<%=term.id.to_s%>&plan_id=<%=@plan.id.to_s%>">Delete</a> </p>
+		<form action="/plans/<%= @plan.id.to_s%>/add_course_to_term" method="get">
+			<select name="course_name">
+				<% @course_options.each do |co| %>
+					<option value="<%=co.name%>"><%=co.name%></option>
+				<%end%>
+
+			</select>
+			<input type="hidden" name="plan_id" value="<%=@plan.id.to_s%>"/>
+			<input type="hidden" name="term_id" value="<%=term.id.to_s%>"/>
+			<input type="submit" />
+
+		</form>
+		<ul>	
+			<% term.courses.each do |course| %>
+				<li><%= course.name %> <a href="/plans/<%= @plan.id.to_s%>/remove_course_from_term?term_id=<%=term.id.to_s%>&plan_id=<%=@plan.id.to_s%>&course_name=<%= course.name %>">Remove</a>
+				</li>
+			<% end %>
+		</ul>
 	<% end %>
 
 </p>

@@ -11,6 +11,13 @@ c3 = CourseOption.create(name:"BG 1220")
 c4 = CourseOption.create(name:"BG 1230")
 c5 = CourseOption.create(name:"EGCP 1010")
 
+CourseOption.create(name:"EGCP 2120") 
+CourseOption.create(name:"EGEE 3110") 
+CourseOption.create(name:"EGEE 3210")
+CourseOption.create(name:"CS 3410") 
+CourseOption.create(name:"CS 3310") 
+
+
 
 
 user1 = User.new
@@ -36,6 +43,9 @@ t1 = Term.create(plan_id:p.id,semester:"FA",year:2016)
 t2 = Term.create(plan_id:p.id,semester:"SP",year:2017)
 
 Course.create(term_id:t1.id,name: "CS 1220")
+Course.create(term_id:t1.id,name: "EGCP 1010")
+Course.create(term_id:t1.id,name: "EGCP 3820")
+Course.create(term_id:t1.id,name: "CS 4220")
 #t.save!
 #p.terms = [t]
 
